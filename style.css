@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f0f2f5;
+    color: #1f2937;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+  
+  .container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 720px;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  
+  input {
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #1d4ed8;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 14px;
+  }
+  
+  th {
+    background: #f9fafb;
+  }
+  
+  .excluir {
+    background: #dc2626;
+    padding: 6px 12px;
+  }
+  
+  .excluir:hover {
+    background: #b91c1c;
+  }
+  
+  #sem-registros {
+    color: #6b7280;
+    text-align: center;
+    margin-top: 16px;
+  }
+  
+  @media (max-width: 600px) {
+    form {
+      grid-template-columns: 1fr;
+    }
+  }

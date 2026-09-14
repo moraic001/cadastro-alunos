@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Alunos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Cadastro de Alunos</h1>
+
+    <form id="form-aluno">
+      <input type="text" id="campo-nome" placeholder="Nome completo" required>
+      <input type="text" id="campo-curso" placeholder="Curso" required>
+      <input type="text" id="campo-ra" placeholder="RA" required>
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Curso</th>
+          <th>RA</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="corpo-tabela"></tbody>
+    </table>
+
+    <p id="sem-registros">Nenhum aluno cadastrado.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
