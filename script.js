@@ -1,18 +1,19 @@
 // ============================================
-// Versao 1: dados apenas em memoria (array)
+// Versao 2: dados persistidos no localStorage
 // ============================================
 
-// "Banco de dados" em memoria: um array de objetos
-let alunos = [];
+// Nome da "chave" onde os dados ficam salvos no navegador
+const CHAVE = 'alunos';
 
-// Referencias aos elementos da pagina
+// Carrega o que ja foi salvo (ou comeca vazio)
+let alunos = carregarAlunos();
+
 const formulario = document.getElementById('form-aluno');
 const corpoTabela = document.getElementById('corpo-tabela');
 const aviso = document.getElementById('sem-registros');
 
-// Quando o formulario for enviado, adiciona um aluno
 formulario.addEventListener('submit', (evento) => {
-  evento.preventDefault(); // evita recarregar a pagina
+  evento.preventDefault();
 
   const aluno = {
     nome: document.getElementById('campo-nome').value,
@@ -20,18 +21,38 @@ formulario.addEventListener('submit', (evento) => {
     ra: document.getElementById('campo-ra').value
   };
 
-  alunos.push(aluno);  // adiciona no array
-  formulario.reset();  // limpa os campos
-  renderizar();        // atualiza a tabela
+  alunos.push(aluno);
+  salvarAlunos();      // grava no localStorage
+  formulario.reset();
+  renderizar();
 });
 
-// Exclui um aluno pela posicao no array
 function excluirAluno(indice) {
   alunos.splice(indice, 1);
+  salvarAlunos();      // grava novamente apos a exclusao
   renderizar();
 }
 
-// Desenha o array na tabela
+// Converte o array em texto (JSON) e salva no navegador
+function salvarAlunos() {
+  localStorage.setItem(CHAVE, JSON.stringify(alunos));
+}
+
+// Le o texto salvo e converte de volta para array
+function carregarAlunos() {
+  const dados = localStorage.getItem(CHAVE);
+
+  if (dados === null) {
+    return []; // primeira vez: nada salvo ainda
+  }
+
+  try {
+    return JSON.parse(dados);
+  } catch (erro) {
+    return []; // dados corrompidos: recomeca do zero
+  }
+}
+
 function renderizar() {
   corpoTabela.innerHTML = '';
 
